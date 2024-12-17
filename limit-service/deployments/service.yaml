@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: limit-service
+spec:
+  selector:
+    app: limit-service
+  ports:
+    - protocol: TCP
+      port: 5577
+      targetPort: 5577
+  type: ClusterIP

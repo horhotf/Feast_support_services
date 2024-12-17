@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: limit-service
+  labels:
+    app: limit-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: limit-service
+  template:
+    metadata:
+      labels:
+        app: limit-service
+    spec:
+      containers:
+      - name: limit-service
+        image: your-dockerhub-username/cache-service:latest # Replace with your Docker image tag
+        ports:
+        - containerPort: 5577
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
